@@ -1,0 +1,74 @@
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	background-color: gray;
+}
+
+#content {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	justify-content: center;	
+}
+
+
+h1 {
+	position: relative;
+	top: 3em;
+	color: purple;
+	text-decoration: underline;
+	margin-bottom: 2.5em;
+	z-index: 3;
+}
+
+svg {
+	position: relative;
+	bottom: 2em;
+	background-color: white;
+	margin-right: auto;
+	margin-left: auto;
+	z-index: 2;
+}
+
+.bar {
+	z-index: 2;
+}
+
+#label {
+	color: purple;
+}
+
+#toolTip {
+  position: absolute;
+  width: 8em;
+  height: auto;
+  padding: 1em;
+  color: purple;
+  background-color: white;
+  border: 0.2em solid purple;
+  text-align: center;
+  z-index: 4;
+  display: none;
+ }
+
+#learnMore {
+	position: relative;
+	margin-top: -6em;
+	left: 10em;
+	z-index: 2;
+	color: purple;
+}
+
+
+#footer {
+	position: relative;
+ 	color: purple;
+ 	margin-top: 5.5em; 
+}
+
+
+
+
