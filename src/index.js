@@ -13,6 +13,7 @@ function getGDP() {
   const height = 600;
 
   const svg = d3.select("svg")
+                 .attr("id", "svg")
                  .attr("width", width)
                  .attr("height", height);
 
@@ -36,23 +37,23 @@ function getGDP() {
   const G  =  svg.append("g")
                  .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
                
-                 G.append("g")
-                  .attr("id", "x-axis")
-                  .attr("transform", "translate(" + 0 + "," + viewHeight + ")")
-                  .call(xAxisCall)
+        G.append("g")
+         .attr("id", "x-axis")
+         .attr("transform", "translate(" + 0 + "," + viewHeight + ")")
+         .call(xAxisCall)
 
-                 G.append("g")
-                  .attr("id", "y-axis")
-                  .style("color", "purple")
-                  .call(yAxisCall);                 
+        G.append("g")
+         .attr("id", "y-axis")
+         .style("color", "purple")
+         .call(yAxisCall);                 
                   
-                svg.append("text")
-                   .attr("class", "y label")
-                   .attr("text-anchor", "end")
-                   .attr("y", 110)
-                   .attr("x", -120)
-                   .attr("transform", "rotate(-90)")
-                   .text("Gross Domestic Product");
+        svg.append("text")
+           .attr("class", "y-label")
+           .attr("text-anchor", "end")
+           .attr("y", 110)
+           .attr("x", -120)
+           .attr("transform", "rotate(-90)")
+           .text("Gross Domestic Product");
 
   const ticks = d3.selectAll("tick, text")
              ticks.attr("class", "tick")
@@ -87,7 +88,6 @@ function getGDP() {
                   quater = "Q4"
                 }
                 const format = d3.format(",");
-                
                 toolTip
                   .attr("data-date", d[0])
                   .style("left", d3.event.pageX + 3 + "px")
@@ -98,11 +98,40 @@ function getGDP() {
                   d3.select(this)
                   .style("fill", "white")
                 })   
-                .on("mouseleave", function(d) {
+                  .on("mouseleave", function(d) {
                   toolTip
                     .style("display", "none");  
                   d3.select(this)
                     .style("fill", "purple");
-                });
+                }); 
+                  /* For Mobile Devices */
+                const clear = document.querySelector("body"); 
+                clear.addEventListener("click", function(e) {
+                  let barColor = document.getElementsByClassName("bar"); 
+                  if (event.target.style.fill !== "white") {
+                    toolTip
+                    .style("display", "none");
+                    for (let i = 0; i < barColor.length; i++) {
+                      barColor[i].style.fill = "purple";
+                     }
+                  } else {
+                      for (let i = 0; i < barColor.length; i++) {
+                      barColor[i].style.fill = "purple";
+                      }
+                    event.target.style.fill = "white";
+                  }  
+              }); 
+      
       };
   }
+
+
+
+
+
+
+
+
+
+
+

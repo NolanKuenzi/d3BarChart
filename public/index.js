@@ -15,7 +15,7 @@ function getGDP() {
     var width = 900;
     var height = 600;
 
-    var svg = d3.select("svg").attr("width", width).attr("height", height);
+    var svg = d3.select("svg").attr("id", "svg").attr("width", width).attr("height", height);
 
     var margin = { top: 85, right: 100, bottom: 90, left: 90 };
     var viewWidth = +svg.attr("width") - margin.left - margin.right;
@@ -43,7 +43,7 @@ function getGDP() {
 
     G.append("g").attr("id", "y-axis").style("color", "purple").call(yAxisCall);
 
-    svg.append("text").attr("class", "y label").attr("text-anchor", "end").attr("y", 110).attr("x", -120).attr("transform", "rotate(-90)").text("Gross Domestic Product");
+    svg.append("text").attr("class", "y-label").attr("text-anchor", "end").attr("y", 110).attr("x", -120).attr("transform", "rotate(-90)").text("Gross Domestic Product");
 
     var ticks = d3.selectAll("tick, text");
     ticks.attr("class", "tick");
@@ -73,7 +73,6 @@ function getGDP() {
         quater = "Q4";
       }
       var format = d3.format(",");
-
       toolTip.attr("data-date", d[0]).style("left", d3.event.pageX + 3 + "px").style("top", d3.event.pageY + "px").style("display", "inline-block").html(function () {
         return d[0].slice(0, 4) + " " + quater + ":" + "<br>" + " $" + format(d[1]) + " " + "Billion";
       });
@@ -82,6 +81,22 @@ function getGDP() {
     }).on("mouseleave", function (d) {
       toolTip.style("display", "none");
       d3.select(this).style("fill", "purple");
+    });
+    /* For Mobile Devices */
+    var clear = document.querySelector("body");
+    clear.addEventListener("click", function (e) {
+      var barColor = document.getElementsByClassName("bar");
+      if (event.target.style.fill !== "white") {
+        toolTip.style("display", "none");
+        for (var i = 0; i < barColor.length; i++) {
+          barColor[i].style.fill = "purple";
+        }
+      } else {
+        for (var _i = 0; _i < barColor.length; _i++) {
+          barColor[_i].style.fill = "purple";
+        }
+        event.target.style.fill = "white";
+      }
     });
   };
 }
