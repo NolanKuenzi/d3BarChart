@@ -76,7 +76,6 @@ function getGDP() {
       toolTip.attr("data-date", d[0]).style("left", d3.event.pageX + 3 + "px").style("top", d3.event.pageY + "px").style("display", "inline-block").html(function () {
         return d[0].slice(0, 4) + " " + quater + ":" + "<br>" + " $" + format(d[1]) + " " + "Billion";
       });
-
       d3.select(this).style("fill", "white");
     }).on("mouseleave", function (d) {
       toolTip.style("display", "none");
@@ -84,19 +83,12 @@ function getGDP() {
     });
     /* For Mobile Devices */
     var clear = document.querySelector("body");
-    clear.addEventListener("click", function (e) {
+    clear.addEventListener("touchend", function (e) {
       var barColor = document.getElementsByClassName("bar");
-      if (event.target.style.fill !== "white") {
-        toolTip.style("display", "none");
-        for (var i = 0; i < barColor.length; i++) {
-          barColor[i].style.fill = "purple";
-        }
-      } else {
-        for (var _i = 0; _i < barColor.length; _i++) {
-          barColor[_i].style.fill = "purple";
-        }
-        event.target.style.fill = "white";
+      for (var i = 0; i < barColor.length; i++) {
+        barColor[i].style.fill = "green";
       }
+      toolTip.style("display", "none");
     });
   };
 }

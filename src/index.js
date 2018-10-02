@@ -94,40 +94,28 @@ function getGDP() {
                   .style("top", d3.event.pageY + "px")
                   .style("display", "inline-block")
                   .html(() => d[0].slice(0, 4) + " " + quater + ":" + "<br>" + " $" + format(d[1]) + " " + "Billion");
-
                   d3.select(this)
                   .style("fill", "white")
                 })   
-                  .on("mouseleave", function(d) {
+                .on("mouseleave", function(d) {
                   toolTip
                     .style("display", "none");  
                   d3.select(this)
                     .style("fill", "purple");
                 }); 
                   /* For Mobile Devices */
-                const clear = document.querySelector("body"); 
-                clear.addEventListener("click", function(e) {
-                  let barColor = document.getElementsByClassName("bar"); 
-                  if (event.target.style.fill !== "white") {
+                const clear = document.querySelector("body");
+                  clear.addEventListener("touchend", function(e) {
+                    let barColor = document.getElementsByClassName("bar"); 
+                    for (let i = 0; i < barColor.length; i++) {
+                      barColor[i].style.fill = "green";
+                    }
                     toolTip
                     .style("display", "none");
-                    for (let i = 0; i < barColor.length; i++) {
-                      barColor[i].style.fill = "purple";
-                     }
-                  } else {
-                      for (let i = 0; i < barColor.length; i++) {
-                      barColor[i].style.fill = "purple";
-                      }
-                    event.target.style.fill = "white";
-                  }  
-              }); 
-      
-      };
-  }
-
-
-
-
+                }); 
+                
+    };
+}
 
 
 
