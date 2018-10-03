@@ -33,7 +33,8 @@ function getGDP() {
                       .tickFormat(d3.format("d")); 
                                 
   const yAxisCall = d3.axisLeft(yAxisScale);
- 
+
+  
   const G  =  svg.append("g")
                  .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
                
