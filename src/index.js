@@ -103,7 +103,7 @@ function getGDP() {
                   d3.select(this)
                     .style("fill", "purple");
                 }); 
-                  /* For Mobile Devices */
+                /* For Mobile Devices */
                 const clear = document.querySelector("body");
                   clear.addEventListener("touchend", function(e) {
                     let barColor = document.getElementsByClassName("bar"); 
@@ -113,13 +113,13 @@ function getGDP() {
                     toolTip
                     .style("display", "none");
                 }); 
-                
+              
     };
 }
 
 
 
 
-
+  
 
 
