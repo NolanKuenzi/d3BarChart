@@ -51,7 +51,7 @@ function getGDP() {
 
     var toolTip = d3.select("body").append("div").attr("id", "toolTip");
 
-    var bars = d3.select("svg").append("g").selectAll("rect").data(data).enter().append("rect").attr("class", "bar").attr("data-date", function (d) {
+    var bars = d3.select("svg").append("g").selectAll("rect").data(data).enter().append("rect").attr("class", "bar").attr("id", "barId").attr("data-date", function (d) {
       return d[0];
     }).attr("data-gdp", function (d) {
       return d[1];
@@ -74,7 +74,7 @@ function getGDP() {
       }
       var format = d3.format(",");
       toolTip.attr("data-date", d[0]).style("left", d3.event.pageX + 3 + "px").style("top", d3.event.pageY + "px").style("display", "inline-block").html(function () {
-        return d[0].slice(0, 4) + " " + quater + ":" + "<br>" + " $" + format(d[1]) + " " + "Billion";
+        return d[0].slice(0, 4) + " quater:<br>$" + format(d[1]) + " Billion";
       });
       d3.select(this).style("fill", "white");
     }).on("mouseleave", function (d) {
@@ -83,12 +83,14 @@ function getGDP() {
     });
     /* For Mobile Devices */
     var clear = document.querySelector("body");
-    clear.addEventListener("touchend", function (e) {
-      var barColor = document.getElementsByClassName("bar");
-      for (var i = 0; i < barColor.length; i++) {
-        barColor[i].style.fill = "green";
+    clear.addEventListener("click", function (e) {
+      if (event.target.id !== "barId") {
+        var barColor = document.getElementsByClassName("bar");
+        for (var i = 0; i < barColor.length; i++) {
+          barColor[i].style.fill = "purple";
+        }
+        toolTip.style("display", "none");
       }
-      toolTip.style("display", "none");
     });
   };
 }

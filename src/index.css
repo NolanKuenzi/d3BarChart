@@ -43,8 +43,6 @@ svg {
 
 #toolTip {
   position: absolute;
-  width: 8em;
-  height: auto;
   padding: 1em;
   color: purple;
   background-color: white;

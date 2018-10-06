@@ -70,6 +70,7 @@ function getGDP() {
                .enter()
                .append("rect")
                .attr("class", "bar")
+               .attr("id", "barId")
                .attr("data-date", d => d[0])
                .attr("data-gdp", d => d[1])
                .attr("x", (d, i) => ((i * viewWidth) / data.length) + 90)
@@ -94,7 +95,7 @@ function getGDP() {
                   .style("left", d3.event.pageX + 3 + "px")
                   .style("top", d3.event.pageY + "px")
                   .style("display", "inline-block")
-                  .html(() => d[0].slice(0, 4) + " " + quater + ":" + "<br>" + " $" + format(d[1]) + " " + "Billion");
+                  .html(() => `${d[0].slice(0, 4)} quater:<br>$${format(d[1])} Billion`);
                   d3.select(this)
                   .style("fill", "white")
                 })   
@@ -103,18 +104,20 @@ function getGDP() {
                     .style("display", "none");  
                   d3.select(this)
                     .style("fill", "purple");
-                }); 
+                });
                 /* For Mobile Devices */
-                const clear = document.querySelector("body");
-                  clear.addEventListener("touchend", function(e) {
+                  const clear = document.querySelector("body");
+                  clear.addEventListener("click", function(e) {
+                    if (event.target.id !== "barId") {
                     let barColor = document.getElementsByClassName("bar"); 
                     for (let i = 0; i < barColor.length; i++) {
-                      barColor[i].style.fill = "green";
+                      barColor[i].style.fill = "purple";
                     }
-                    toolTip
+                  toolTip
                     .style("display", "none");
+                  }
                 }); 
-              
+                              
     };
 }
 
