@@ -109,16 +109,16 @@ function getGDP() {
                   const clear = document.querySelector("body");
                   clear.addEventListener("touchstart", function(e) {
                     if (event.target.id !== "barId") {
-                    let barColor = document.getElementsByClassName("bar"); 
+                    const barColor = document.getElementsByClassName("bar"); 
                     for (let i = 0; i < barColor.length; i++) {
                       barColor[i].style.fill = "purple";
                     }
                   toolTip
                     .style("display", "none");
                   }
-                }); 
+              }); 
                               
-    };
+  };
 }
 
 
