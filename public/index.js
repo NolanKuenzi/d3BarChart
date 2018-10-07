@@ -83,7 +83,7 @@ function getGDP() {
     });
     /* For Mobile Devices */
     var clear = document.querySelector("body");
-    clear.addEventListener("click", function (e) {
+    clear.addEventListener("touchstart", function (e) {
       if (event.target.id !== "barId") {
         var barColor = document.getElementsByClassName("bar");
         for (var i = 0; i < barColor.length; i++) {

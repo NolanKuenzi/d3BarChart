@@ -107,7 +107,7 @@ function getGDP() {
                 });
                 /* For Mobile Devices */
                   const clear = document.querySelector("body");
-                  clear.addEventListener("click", function(e) {
+                  clear.addEventListener("touchstart", function(e) {
                     if (event.target.id !== "barId") {
                     let barColor = document.getElementsByClassName("bar"); 
                     for (let i = 0; i < barColor.length; i++) {
