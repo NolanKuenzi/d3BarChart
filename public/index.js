@@ -84,7 +84,7 @@ function getGDP() {
     /* For Mobile Devices */
     var clear = document.querySelector("body");
     clear.addEventListener("touchstart", function (e) {
-      if (event.target.className.baseVal !== "bar") {
+      if (e.target.className.baseVal !== "bar") {
         var barColor = document.getElementsByClassName("bar");
         for (var i = 0; i < barColor.length; i++) {
           barColor[i].style.fill = "purple";
