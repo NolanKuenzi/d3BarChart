@@ -51,7 +51,7 @@ function getGDP() {
 
     var toolTip = d3.select("body").append("div").attr("id", "toolTip");
 
-    var bars = d3.select("svg").append("g").selectAll("rect").data(data).enter().append("rect").attr("class", "bar").attr("id", "barId").attr("data-date", function (d) {
+    var bars = d3.select("svg").append("g").selectAll("rect").data(data).enter().append("rect").attr("class", "bar").attr("data-date", function (d) {
       return d[0];
     }).attr("data-gdp", function (d) {
       return d[1];
@@ -84,7 +84,7 @@ function getGDP() {
     /* For Mobile Devices */
     var clear = document.querySelector("body");
     clear.addEventListener("touchstart", function (e) {
-      if (event.target.id !== "barId") {
+      if (event.target.className.baseVal !== "bar") {
         var barColor = document.getElementsByClassName("bar");
         for (var i = 0; i < barColor.length; i++) {
           barColor[i].style.fill = "purple";

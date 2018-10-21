@@ -70,7 +70,6 @@ function getGDP() {
                .enter()
                .append("rect")
                .attr("class", "bar")
-               .attr("id", "barId")
                .attr("data-date", d => d[0])
                .attr("data-gdp", d => d[1])
                .attr("x", (d, i) => ((i * viewWidth) / data.length) + 90)
@@ -99,23 +98,23 @@ function getGDP() {
                   d3.select(this)
                   .style("fill", "white")
                 })   
-                .on("mouseleave", function(d) {
+               .on("mouseleave", function(d) {
                   toolTip
                     .style("display", "none");  
                   d3.select(this)
                     .style("fill", "purple");
-                });
+                }); 
                 /* For Mobile Devices */
                   const clear = document.querySelector("body");
                   clear.addEventListener("touchstart", function(e) {
-                    if (event.target.id !== "barId") {
+                    if (event.target.className.baseVal !== "bar") {
                     const barColor = document.getElementsByClassName("bar"); 
                     for (let i = 0; i < barColor.length; i++) {
                       barColor[i].style.fill = "purple";
                     }
                   toolTip
                     .style("display", "none");
-                  }
+                  } 
               }); 
                               
   };
@@ -123,7 +122,6 @@ function getGDP() {
 
 
 
-
-  
+ 
 
 
