@@ -79,7 +79,7 @@ d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
 
 /* For Mobile Devices */
 var clear = document.getElementById("body");
-clear.addEventListener("click", function (e) {
+clear.addEventListener("touchstart", function (e) {
   if (e.target.className.baseVal !== "bar") {
     var barColor = document.getElementsByClassName("bar");
     var toolT = document.getElementById("toolTip");
