@@ -1,14 +1,5 @@
-
-getGDP();
-function getGDP() {
-  const req = new XMLHttpRequest();
-  req.open("GET",'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json',true);
-  req.send();
-  req.onload = function() {
-  const json = JSON.parse(req.responseText);
-
-  const data = json.data.map(data => data);
-
+d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json").then(function(response) {
+  const data = response.data.map(d => d);
   const width = 900;
   const height = 600;
 
@@ -102,25 +93,21 @@ function getGDP() {
                      .style("display", "none");  
                    d3.select(this)
                      .style("fill", "purple");
-                 }); 
-                  /* For Mobile Devices */
-                  const clear = document.querySelector("body");
-                  clear.addEventListener("touchstart", function(e) {
-                    if (e.target.className.baseVal !== "bar") {
-                  const barColor = document.getElementsByClassName("bar"); 
-                    for (let i = 0; i < barColor.length; i++) {
-                      barColor[i].style.fill = "purple";
-                    }
-                    toolTip
-                      .style("display", "none");
-                    } 
-                });                            
- 
- };
-}
+                 });
 
+}).catch(function(error) {
+  alert("Data failed to load, please try again.");
+});
 
-
- 
-
-
+/* For Mobile Devices */
+const clear = document.getElementById("body");
+clear.addEventListener("click", function(e) {
+  if (e.target.className.baseVal !== "bar") {
+    const barColor = document.getElementsByClassName("bar");
+    const toolT = document.getElementById("toolTip"); 
+      for (let i = 0; i < barColor.length; i++) {
+        barColor[i].style.fill = "purple";
+      }
+    toolT.style.display = "none";
+  } 
+}); 
